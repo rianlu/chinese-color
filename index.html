@@ -29,7 +29,12 @@
                 jsonColor["RGB"] = rgb
                 jsonColor["hex"] = hex
                 jsonColor["name"] = name
-                jsonColor["pinyin"] = pinyin(name, { toneType: 'none' }).replaceAll(' ', '')
+                jsonColor["pinyin"] = pinyin(name, { toneType: 'none' })
+                    .replaceAll(' ', '')
+                    .replace('ü', 'v')
+                if (name == '将校呢') {
+                    jsonColor["pinyin"] = jsonColor["pinyin"].replace('ne', 'ni')
+                }
                 jsonArray.push(jsonColor)
             }
             return jsonArray
